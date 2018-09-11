@@ -75,7 +75,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:text="24"/>
+            android:text="24"
+            android:textColorHint="@color/colorPrimary"/>
     </LinearLayout>
 
 

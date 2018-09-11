@@ -10,11 +10,13 @@ import android.text.TextPaint
 import android.util.AttributeSet
 
 /**
+ * [AppCompatEditText] with easy prefix and suffix support.
+ *
  * Inspired by https://gist.github.com/morristech/5480419
  */
 class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEditText(context, attrs) {
 
-    val textPaint: TextPaint by lazy {
+    private val textPaint: TextPaint by lazy {
         TextPaint().apply {
             color = currentHintTextColor
             textAlign = Paint.Align.LEFT
@@ -23,31 +25,33 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
         }
     }
 
-    private val prefixDrawable: TagDrawable by lazy { TagDrawable(this) }
+    private val prefixDrawable: PrefixDrawable by lazy { PrefixDrawable(paint) }
 
     var prefix: String? = null
         set(value) {
             field = value
-            prefixDrawable.setText(value)
-            setCompoundDrawablesRelative(prefixDrawable, null, null, null)
+            prefixDrawable.text = value
+            if (value != null) {
+                setCompoundDrawablesRelative(prefixDrawable, null, null, null)
+            } else {
+                setCompoundDrawablesRelative(null, null, null, null)
+            }
         }
 
     var suffix: String? = null
         set(value) {
             field = value
-            setCompoundDrawablesRelative(prefixDrawable, null, null, null)
+            invalidate()
         }
 
     // These are used to store details obtained from the EditText's rendering process
-    private var line0bounds = Rect()
-    var mLine0Baseline: Int = 0
+    private val firstLineBounds = Rect()
 
     private var isInitialized = false
 
     init {
         textPaint.textSize = textSize
 
-        // Setup the prefixDrawable side
         setCompoundDrawablesRelative(prefixDrawable, null, null, null)
         isInitialized = true
     }
@@ -64,7 +68,9 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
     }
 
     public override fun onDraw(c: Canvas) {
-        mLine0Baseline = getLineBounds(0, line0bounds)
+        val lineBounds = getLineBounds(0, firstLineBounds)
+        prefixDrawable.lineBounds = lineBounds
+        prefixDrawable.paint = textPaint
 
         super.onDraw(c)
 
@@ -76,7 +82,7 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
             // We need to draw this like this because
             // setting a right drawable doesn't work properly and we want this
             // just after the text we are editing (but untouchable)
-            val y2 = line0bounds.bottom - textPaint.descent()
+            val y2 = firstLineBounds.bottom - textPaint.descent()
             c.drawText(suffix, textWidth, y2, textPaint)
         }
     }
