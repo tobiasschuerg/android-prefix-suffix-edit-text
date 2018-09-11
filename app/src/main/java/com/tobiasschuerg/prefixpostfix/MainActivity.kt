@@ -10,10 +10,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        edit_text_2.setPrefix("$")
+        edit_text_prefix.setPrefix("$")
+        edit_text_suffix.setSuffix("€")
 
-        edit_text_2.setText("$")
-
-        edit_text_2.setSuffix("$")
+        edit_text_both.setPrefix("Age: ")
+        edit_text_both.setSuffix(" years")
     }
 }
