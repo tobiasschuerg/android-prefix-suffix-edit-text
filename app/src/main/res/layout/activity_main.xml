@@ -24,7 +24,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <com.tobiasschuerg.prefixpostfix.PrefixSuffixEditText
+        <com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
             android:id="@+id/edit_text_prefix"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <com.tobiasschuerg.prefixpostfix.PrefixSuffixEditText
+        <com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
             android:id="@+id/edit_text_suffix"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <com.tobiasschuerg.prefixpostfix.PrefixSuffixEditText
+        <com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
             android:id="@+id/edit_text_both"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

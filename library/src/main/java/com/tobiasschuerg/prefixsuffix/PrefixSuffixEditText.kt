@@ -1,10 +1,11 @@
-package com.tobiasschuerg.prefixpostfix
+package com.tobiasschuerg.prefixsuffix
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.Typeface
+import android.os.Build
 import android.support.v7.widget.AppCompatEditText
 import android.text.TextPaint
 import android.util.AttributeSet
@@ -31,11 +32,7 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
         set(value) {
             field = value
             prefixDrawable.text = value
-            if (value != null) {
-                setCompoundDrawablesRelative(prefixDrawable, null, null, null)
-            } else {
-                setCompoundDrawablesRelative(null, null, null, null)
-            }
+            updatePrefixDrawable()
         }
 
     var suffix: String? = null
@@ -52,7 +49,7 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
     init {
         textPaint.textSize = textSize
 
-        setCompoundDrawablesRelative(prefixDrawable, null, null, null)
+        updatePrefixDrawable()
         isInitialized = true
     }
 
@@ -84,6 +81,22 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
             // just after the text we are editing (but untouchable)
             val y2 = firstLineBounds.bottom - textPaint.descent()
             c.drawText(suffix, textWidth, y2, textPaint)
+        }
+    }
+
+    private fun updatePrefixDrawable() {
+        if (prefix != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                setCompoundDrawablesRelative(prefixDrawable, null, null, null)
+            } else {
+                setCompoundDrawables(prefixDrawable, null, null, null)
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                setCompoundDrawablesRelative(null, null, null, null)
+            } else {
+                setCompoundDrawables(null, null, null, null)
+            }
         }
     }
 

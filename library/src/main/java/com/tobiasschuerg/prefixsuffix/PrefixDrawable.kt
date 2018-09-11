@@ -1,4 +1,4 @@
-package com.tobiasschuerg.prefixpostfix
+package com.tobiasschuerg.prefixsuffix
 
 import android.graphics.Canvas
 import android.graphics.ColorFilter
