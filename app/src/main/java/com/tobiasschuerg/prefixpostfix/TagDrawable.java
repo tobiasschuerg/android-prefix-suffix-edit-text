@@ -30,7 +30,7 @@ public class TagDrawable extends Drawable {
     public void draw(@NonNull Canvas canvas) {
         // I don't know why this y works here, but it does :)
         // (aka if you are from Google/are Jake Wharton and I have done it wrong, please tell me!)
-        canvas.drawText(text, 0, extendedEditText.getMLine0Baseline() + canvas.getClipBounds().top, extendedEditText.getMTextPaint());
+        canvas.drawText(text, 0, extendedEditText.getMLine0Baseline() + canvas.getClipBounds().top, extendedEditText.getTextPaint());
     }
 
     @Override
@@ -48,11 +48,11 @@ public class TagDrawable extends Drawable {
 
     @Override
     public int getIntrinsicHeight() {
-        return (int) extendedEditText.getMFontHeight();
+        return (int) extendedEditText.getTextSize();
     }
 
     @Override
     public int getIntrinsicWidth() {
-        return (int) extendedEditText.getMTextPaint().measureText(text);
+        return (int) extendedEditText.getTextPaint().measureText(text);
     }
 }
