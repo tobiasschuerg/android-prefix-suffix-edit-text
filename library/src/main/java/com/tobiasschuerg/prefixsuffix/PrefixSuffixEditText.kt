@@ -6,9 +6,9 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.Typeface
 import android.os.Build
-import androidx.appcompat.widget.AppCompatEditText
 import android.text.TextPaint
 import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatEditText
 
 /**
  * [AppCompatEditText] with easy prefix and suffix support.
@@ -75,12 +75,12 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
         val text = text.toString()
         val textWidth: Float = textPaint.measureText(prefixDrawable.text + text) + paddingLeft
 
-        if (suffix != null) {
+        suffix?.let {
             // We need to draw this like this because
             // setting a right drawable doesn't work properly and we want this
             // just after the text we are editing (but untouchable)
             val y2 = firstLineBounds.bottom - textPaint.descent()
-            c.drawText(suffix, textWidth, y2, textPaint)
+            c.drawText(it, textWidth, y2, textPaint)
         }
     }
 

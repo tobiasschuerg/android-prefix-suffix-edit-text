@@ -14,7 +14,7 @@ internal class PrefixDrawable(
         var lineBounds: Int = 0
 ) : Drawable() {
 
-    var text: String? by Delegates.observable("") { _, oldValue: String?, newValue: String? ->
+    var text: String? by Delegates.observable("") { _, _: String?, _: String? ->
         // Tell it we need to be as big as we want to be!
         setBounds(0, 0, intrinsicWidth, intrinsicHeight)
         invalidateSelf()
@@ -22,10 +22,10 @@ internal class PrefixDrawable(
 
 
     override fun draw(canvas: Canvas) {
-        // I don't know why this y works here, but it does :)
-        // (aka if you are from Google/are Jake Wharton and I have done it wrong, please tell me!)
-        val y = (lineBounds + canvas.clipBounds.top).toFloat()
-        canvas.drawText(text, 0f, y, paint)
+        text?.let {
+            val y = (lineBounds + canvas.clipBounds.top).toFloat()
+            canvas.drawText(it, 0f, y, paint)
+        }
     }
 
     override fun setAlpha(i: Int) {}

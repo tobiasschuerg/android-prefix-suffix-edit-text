@@ -29,7 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:text="13.37"/>
+            android:text="13.37"
+            tools:ignore="HardcodedText"/>
     </LinearLayout>
 
     <LinearLayout
@@ -52,7 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:text="42.42"/>
+            android:text="42.42"
+            tools:ignore="HardcodedText"/>
     </LinearLayout>
 
     <LinearLayout
@@ -76,7 +78,8 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:text="24"
-            android:textColorHint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorPrimary"
+            tools:ignore="HardcodedText"/>
     </LinearLayout>
 
 
