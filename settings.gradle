@@ -1,1 +1,1 @@
-include ':sample', ':library_prefix_suffix_edittext'
+include ':sample', ':library'

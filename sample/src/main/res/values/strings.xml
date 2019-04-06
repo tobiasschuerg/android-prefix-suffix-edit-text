@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Prefix Suffix Sample</string>
+    <string name="app_name">Prefix Suffix EditText Sample</string>
     <string name="prefix">Prefix</string>
     <string name="suffix">Suffix</string>
     <string name="label_both_prefix_and_suffix">Both, prefix, suffix and color</string>
