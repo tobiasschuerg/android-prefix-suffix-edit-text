@@ -3,6 +3,21 @@
 # android-prefix-suffix-edit-text
 EditText with support for non editable prefix and suffix.
 
+```kotlin
+// just a prefix:
+edit_text_dollar.prefix = "$"
+
+
+// just a suffix
+edit_text_euro.suffix = "€"
+
+
+// both, prefix and suffix
+edit_text_age.prefix = "Age: "
+edit_text_age.suffix = " years"
+```
+See  [sample code](https://github.com/tobiasschuerg/android-prefix-suffix-edit-text/blob/master/app/src/main/java/com/tobiasschuerg/sample/MainActivity.kt).
+
 ![Sample Screenshot](https://github.com/tobiasschuerg/android-prefix-suffix-edit-text/raw/master/screenshots/sample.png)
 
 # Add as Library
