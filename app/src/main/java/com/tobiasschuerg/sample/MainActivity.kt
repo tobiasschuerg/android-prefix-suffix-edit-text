@@ -2,7 +2,9 @@ package com.tobiasschuerg.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.edit_text_age
+import kotlinx.android.synthetic.main.activity_main.edit_text_dollar
+import kotlinx.android.synthetic.main.activity_main.edit_text_euro
 
 class MainActivity : AppCompatActivity() {
 
@@ -10,11 +12,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        edit_text_prefix.prefix = "$"
 
-        edit_text_suffix.suffix = "€"
+        // just a prefix:
+        edit_text_dollar.prefix = "$"
 
-        edit_text_both.prefix = "Age: "
-        edit_text_both.suffix = " years"
+
+        // just a suffix
+        edit_text_euro.suffix = "€"
+
+
+        // both, prefix and suffix
+        edit_text_age.prefix = "Age: "
+        edit_text_age.suffix = " years"
     }
 }
