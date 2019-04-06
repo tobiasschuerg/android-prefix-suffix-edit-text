@@ -78,6 +78,8 @@
             android:inputType="numberDecimal"
             android:text="24"
             android:textColorHint="@color/colorPrimary"
+            app:prefix="Age: "
+            app:suffix=" years"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 

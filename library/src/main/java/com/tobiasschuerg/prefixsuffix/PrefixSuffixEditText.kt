@@ -1,6 +1,7 @@
 package com.tobiasschuerg.prefixsuffix
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
@@ -8,14 +9,18 @@ import android.graphics.Typeface
 import android.os.Build
 import android.text.TextPaint
 import android.util.AttributeSet
+import android.util.Log
 import androidx.appcompat.widget.AppCompatEditText
+import com.tobiasschuerg.library.R
+
 
 /**
  * [AppCompatEditText] with easy prefix and suffix support.
  *
  * Inspired by https://gist.github.com/morristech/5480419
  */
-class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEditText(context, attrs) {
+class PrefixSuffixEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0) : AppCompatEditText(context, attrs) {
+
 
     private val textPaint: TextPaint by lazy {
         TextPaint().apply {
@@ -28,8 +33,11 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
 
     private val prefixDrawable: PrefixDrawable by lazy { PrefixDrawable(paint) }
 
-    var prefix: String? = null
+    var prefix: String = ""
         set(value) {
+            if (value.isNotBlank()) {
+                Log.v(TAG, "prefix: $value")
+            }
             field = value
             prefixDrawable.text = value
             updatePrefixDrawable()
@@ -37,6 +45,9 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
 
     var suffix: String? = null
         set(value) {
+            if (!value.isNullOrBlank()) {
+                Log.v(TAG, "suffix: $value")
+            }
             field = value
             invalidate()
         }
@@ -51,6 +62,11 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
 
         updatePrefixDrawable()
         isInitialized = true
+
+        val typedArray: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.PrefixSuffixEditText)
+        prefix = typedArray.getString(R.styleable.PrefixSuffixEditText_prefix) ?: ""
+        suffix = typedArray.getString(R.styleable.PrefixSuffixEditText_suffix)
+        typedArray.recycle()
     }
 
     override fun setTypeface(typeface: Typeface) {
@@ -66,14 +82,17 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
 
     public override fun onDraw(c: Canvas) {
         val lineBounds = getLineBounds(0, firstLineBounds)
-        prefixDrawable.lineBounds = lineBounds
-        prefixDrawable.paint = textPaint
+        prefixDrawable.let {
+            it.lineBounds = lineBounds
+            it.paint = textPaint
+        }
 
         super.onDraw(c)
 
         // Now we can calculate what we need!
         val text = text.toString()
-        val textWidth: Float = textPaint.measureText(prefixDrawable.text + text) + paddingLeft
+        val prefixText: String = prefixDrawable.text
+        val textWidth: Float = textPaint.measureText(prefixText + text) + paddingLeft
 
         suffix?.let {
             // We need to draw this like this because
@@ -85,19 +104,15 @@ class PrefixSuffixEditText(context: Context, attrs: AttributeSet) : AppCompatEdi
     }
 
     private fun updatePrefixDrawable() {
-        if (prefix != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                setCompoundDrawablesRelative(prefixDrawable, null, null, null)
-            } else {
-                setCompoundDrawables(prefixDrawable, null, null, null)
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            setCompoundDrawablesRelative(prefixDrawable, null, null, null)
         } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                setCompoundDrawablesRelative(null, null, null, null)
-            } else {
-                setCompoundDrawables(null, null, null, null)
-            }
+            setCompoundDrawables(prefixDrawable, null, null, null)
         }
+    }
+
+    companion object {
+        private const val TAG = "PrefixSuffixEditText"
     }
 
 }
