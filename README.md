@@ -16,7 +16,8 @@ Either directly via xml:
     android:inputType="numberDecimal"
     android:text="24"
     app:prefix="Age: "
-    app:suffix=" years" />
+    app:suffix=" years"
+    android:textColorHint="@color/colorPrimary"/>
 ```
 
 or programmatically in code:
@@ -26,8 +27,9 @@ or programmatically in code:
 edit_text_dollar.prefix = "$"
 
 
-// just a suffix
+// suffix with color
 edit_text_euro.suffix = "€"
+edit_text_euro.setHintTextColor(Color.GREEN)
 
 
 // both, prefix and suffix
@@ -36,6 +38,16 @@ edit_text_age.suffix = " years"
 ```
 See  [sample code](https://github.com/tobiasschuerg/android-prefix-suffix-edit-text/blob/master/app/src/main/java/com/tobiasschuerg/sample/MainActivity.kt).
 
+### Setting the color
+
+The color can be set via xml:
+```xml
+android:textColorHint="@color/colorPrimary"
+```
+and programmatically
+```
+prefixSuffixView.setHintTextColor(Color.GREEN)
+```
 
 ## Add as Library
 Step 1. Add the JitPack repository to your build file  
