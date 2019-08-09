@@ -19,7 +19,11 @@ import com.tobiasschuerg.library.R
  *
  * Inspired by https://gist.github.com/morristech/5480419
  */
-class PrefixSuffixEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0) : AppCompatEditText(context, attrs) {
+class PrefixSuffixEditText @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet,
+        defStyle: Int = 0
+) : AppCompatEditText(context, attrs, defStyle) {
 
 
     private val textPaint: TextPaint by lazy {
@@ -81,6 +85,8 @@ class PrefixSuffixEditText @JvmOverloads constructor(context: Context, attrs: At
     }
 
     public override fun onDraw(c: Canvas) {
+        textPaint.color = currentHintTextColor
+
         val lineBounds = getLineBounds(0, firstLineBounds)
         prefixDrawable.let {
             it.lineBounds = lineBounds
@@ -114,5 +120,4 @@ class PrefixSuffixEditText @JvmOverloads constructor(context: Context, attrs: At
     companion object {
         private const val TAG = "PrefixSuffixEditText"
     }
-
 }

@@ -1,5 +1,6 @@
 package com.tobiasschuerg.sample
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.edit_text_dollar
@@ -14,7 +15,8 @@ class MainActivity : AppCompatActivity() {
         // just a prefix:
         edit_text_dollar.prefix = "$"
 
-        // just a suffix
+        // a suffix with custom color
         edit_text_euro.suffix = "€"
+        edit_text_euro.setHintTextColor(Color.GREEN)
     }
 }
