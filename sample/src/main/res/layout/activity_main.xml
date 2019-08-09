@@ -17,11 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/prefix"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/prefix" />
 
         <com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
             android:id="@+id/edit_text_dollar"
@@ -41,11 +37,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/suffix"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/suffix" />
 
         <com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
             android:id="@+id/edit_text_euro"
@@ -65,11 +57,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_both_prefix_and_suffix"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/label_both_prefix_and_suffix" />
 
         <com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
             android:id="@+id/edit_text_age"

@@ -23,7 +23,7 @@ class PrefixSuffixEditText @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet,
         defStyle: Int = 0
-) : AppCompatEditText(context, attrs, defStyle) {
+) : AppCompatEditText(context, attrs) {
 
 
     private val textPaint: TextPaint by lazy {

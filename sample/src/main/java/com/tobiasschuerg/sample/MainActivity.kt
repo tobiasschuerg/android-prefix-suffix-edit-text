@@ -3,8 +3,7 @@ package com.tobiasschuerg.sample
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.edit_text_dollar
-import kotlinx.android.synthetic.main.activity_main.edit_text_euro
+import com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,11 +11,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val editDollar: PrefixSuffixEditText = findViewById(R.id.edit_text_dollar)
+        val editEuro: PrefixSuffixEditText = findViewById(R.id.edit_text_euro)
+
         // just a prefix:
-        edit_text_dollar.prefix = "$"
+        editDollar.prefix = "$"
 
         // a suffix with custom color
-        edit_text_euro.suffix = "€"
-        edit_text_euro.setHintTextColor(Color.GREEN)
+        editEuro.suffix = "€"
+        editEuro.setHintTextColor(Color.GREEN)
     }
 }

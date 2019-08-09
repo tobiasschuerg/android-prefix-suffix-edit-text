@@ -8,11 +8,8 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        versionCode 4
-        versionName "1.2.1"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        versionCode 5
+        versionName "1.2.2"
     }
 
     buildTypes {
@@ -21,13 +18,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
-
 
     testImplementation 'junit:junit:4.12'
 }
