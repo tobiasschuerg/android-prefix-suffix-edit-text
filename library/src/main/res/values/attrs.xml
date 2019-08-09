@@ -3,5 +3,6 @@
     <declare-styleable name="PrefixSuffixEditText">
         <attr name="prefix" format="string" />
         <attr name="suffix" format="string" />
+        <attr name="prefixSuffixColor" format="color" />
     </declare-styleable>
 </resources>

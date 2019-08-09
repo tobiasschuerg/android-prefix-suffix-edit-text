@@ -2,10 +2,7 @@ package com.tobiasschuerg.prefixsuffix
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Rect
-import android.graphics.Typeface
+import android.graphics.*
 import android.os.Build
 import android.text.TextPaint
 import android.util.AttributeSet
@@ -28,7 +25,8 @@ class PrefixSuffixEditText @JvmOverloads constructor(
 
     private val textPaint: TextPaint by lazy {
         TextPaint().apply {
-            color = currentHintTextColor
+            color = currentTextColor
+            textSize = this@PrefixSuffixEditText.textSize
             textAlign = Paint.Align.LEFT
             isAntiAlias = true
             this.typeface = typeface
@@ -56,20 +54,26 @@ class PrefixSuffixEditText @JvmOverloads constructor(
             invalidate()
         }
 
+    var prefixSuffixColor: Int = currentTextColor
+        set(value) {
+            field = value
+            textPaint.color = value
+            invalidate()
+        }
+
     // These are used to store details obtained from the EditText's rendering process
     private val firstLineBounds = Rect()
 
     private var isInitialized = false
 
     init {
-        textPaint.textSize = textSize
-
         updatePrefixDrawable()
         isInitialized = true
 
         val typedArray: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.PrefixSuffixEditText)
         prefix = typedArray.getString(R.styleable.PrefixSuffixEditText_prefix) ?: ""
         suffix = typedArray.getString(R.styleable.PrefixSuffixEditText_suffix)
+        prefixSuffixColor = typedArray.getColor(R.styleable.PrefixSuffixEditText_prefixSuffixColor, currentTextColor)
         typedArray.recycle()
     }
 
@@ -85,7 +89,6 @@ class PrefixSuffixEditText @JvmOverloads constructor(
     }
 
     public override fun onDraw(c: Canvas) {
-        textPaint.color = currentHintTextColor
 
         val lineBounds = getLineBounds(0, firstLineBounds)
         prefixDrawable.let {
