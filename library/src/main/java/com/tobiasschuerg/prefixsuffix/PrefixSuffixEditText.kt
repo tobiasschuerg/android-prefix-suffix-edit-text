@@ -98,7 +98,8 @@ class PrefixSuffixEditText @JvmOverloads constructor(
         // Now we can calculate what we need!
         val text = text.toString()
         val prefixText: String = prefixDrawable.text
-        val textWidth: Float = textPaint.measureText(prefixText + text) + paddingLeft
+        val visibleHint = if(text.isEmpty()) hint else ""
+        val textWidth: Float = textPaint.measureText(prefixText + text + visibleHint) + paddingLeft
 
         suffix?.let {
             // We need to draw this like this because
