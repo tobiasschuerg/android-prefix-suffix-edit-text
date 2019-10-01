@@ -19,6 +19,6 @@ class MainActivity : AppCompatActivity() {
 
         // a suffix with custom color
         editEuro.suffix = "€"
-        editEuro.setHintTextColor(Color.GREEN)
+        editEuro.prefixSuffixColor = Color.GREEN
     }
 }

@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:text="13.37"
+            app:prefixSuffixColor="@android:color/darker_gray"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
@@ -65,7 +66,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:text="24"
-            android:textColorHint="@color/colorPrimary"
+            app:prefixSuffixColor="@color/colorPrimary"
             app:prefix="Age: "
             app:suffix=" years"
             tools:ignore="HardcodedText" />

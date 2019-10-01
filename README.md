@@ -29,7 +29,7 @@ edit_text_dollar.prefix = "$"
 
 // suffix with color
 edit_text_euro.suffix = "€"
-edit_text_euro.setHintTextColor(Color.GREEN)
+edit_text_euro.prefixSuffixColor = Color.GREEN
 
 
 // both, prefix and suffix
@@ -42,11 +42,11 @@ See  [sample code](https://github.com/tobiasschuerg/android-prefix-suffix-edit-t
 
 The color can be set via xml:
 ```xml
-android:textColorHint="@color/colorPrimary"
+app:prefixSuffixColor="@color/colorPrimary"
 ```
 and programmatically
 ```
-prefixSuffixView.setHintTextColor(Color.GREEN)
+prefixSuffixView.prefixSuffixColor = Color.GREEN
 ```
 
 ## Add as Library
