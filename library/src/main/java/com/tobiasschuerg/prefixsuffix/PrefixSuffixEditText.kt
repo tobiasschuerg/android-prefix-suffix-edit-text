@@ -18,11 +18,10 @@ import com.tobiasschuerg.library.R
  *
  * Inspired by https://gist.github.com/morristech/5480419
  */
-class PrefixSuffixEditText @JvmOverloads constructor(
+class PrefixSuffixEditText constructor(
     context: Context,
-    attrs: AttributeSet,
-    defStyle: Int = 0
-) : AppCompatEditText(context, attrs, defStyle) {
+    attrs: AttributeSet
+) : AppCompatEditText(context, attrs) {
 
     private val textPaint: TextPaint by lazy {
         TextPaint().apply {
