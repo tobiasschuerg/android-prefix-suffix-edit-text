@@ -13,7 +13,6 @@ import android.util.Log
 import androidx.appcompat.widget.AppCompatEditText
 import com.tobiasschuerg.library.R
 
-
 /**
  * [AppCompatEditText] with easy prefix and suffix support.
  *
@@ -23,8 +22,7 @@ class PrefixSuffixEditText @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet,
     defStyle: Int = 0
-) : AppCompatEditText(context, attrs) {
-
+) : AppCompatEditText(context, attrs, defStyle) {
 
     private val textPaint: TextPaint by lazy {
         TextPaint().apply {

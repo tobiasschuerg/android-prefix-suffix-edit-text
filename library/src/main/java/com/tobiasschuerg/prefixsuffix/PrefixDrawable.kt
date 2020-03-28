@@ -10,8 +10,8 @@ import kotlin.properties.Delegates
 // This is for the prefix.
 // It is a drawable for rendering text
 internal class PrefixDrawable(
-        var paint: Paint,
-        var lineBounds: Int = 0
+    var paint: Paint,
+    var lineBounds: Int = 0
 ) : Drawable() {
 
     var text: String by Delegates.observable("") { _, _: String?, _: String? ->
@@ -20,7 +20,6 @@ internal class PrefixDrawable(
         invalidateSelf()
     }
 
-
     override fun draw(canvas: Canvas) {
         text.let {
             val y = (lineBounds + canvas.clipBounds.top).toFloat()
@@ -28,9 +27,13 @@ internal class PrefixDrawable(
         }
     }
 
-    override fun setAlpha(i: Int) {}
+    override fun setAlpha(i: Int) {
+        TODO("alpha not implemented")
+    }
 
-    override fun setColorFilter(colorFilter: ColorFilter?) {}
+    override fun setColorFilter(colorFilter: ColorFilter?) {
+        TODO("color filter not implemented")
+    }
 
     override fun getOpacity(): Int {
         return PixelFormat.OPAQUE
