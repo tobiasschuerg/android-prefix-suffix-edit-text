@@ -20,9 +20,9 @@ import com.tobiasschuerg.library.R
  * Inspired by https://gist.github.com/morristech/5480419
  */
 class PrefixSuffixEditText @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet,
-        defStyle: Int = 0
+    context: Context,
+    attrs: AttributeSet,
+    defStyle: Int = 0
 ) : AppCompatEditText(context, attrs) {
 
 
@@ -98,7 +98,11 @@ class PrefixSuffixEditText @JvmOverloads constructor(
         // Now we can calculate what we need!
         val text = text.toString()
         val prefixText: String = prefixDrawable.text
-        val textWidth: Float = textPaint.measureText(prefixText + text) + paddingLeft
+        val textWidth: Float = if (text.isNotEmpty()) {
+            textPaint.measureText(prefixText + text) + paddingLeft
+        } else {
+            textPaint.measureText(prefixText + hint) + paddingLeft
+        }
 
         suffix?.let {
             // We need to draw this like this because

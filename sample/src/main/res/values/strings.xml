@@ -3,4 +3,5 @@
     <string name="prefix">Prefix</string>
     <string name="suffix">Suffix</string>
     <string name="label_both_prefix_and_suffix">Both, prefix, suffix and color</string>
+    <string name="prefix_suffix_and_hint">Prefix, suffix and hint</string>
 </resources>

@@ -71,5 +71,26 @@
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prefix_suffix_and_hint" />
+
+        <com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
+            android:id="@+id/edit_text_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="hint"
+            app:prefix="prefix "
+            app:suffix=" suffix"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
 
 </LinearLayout>
