@@ -18,6 +18,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    detekt {
+        buildUponDefaultConfig = true
+        baseline = file("$projectDir/detekt/baseline.xml")
+    }
 }
 
 dependencies {
