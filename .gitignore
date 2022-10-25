@@ -13,3 +13,5 @@
 .idea/misc.xml
 .idea/runConfigurations.xml
 .idea/vcs.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
