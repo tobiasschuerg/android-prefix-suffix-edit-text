@@ -70,7 +70,7 @@ class PrefixSuffixEditText constructor(
         typedArray.recycle()
     }
 
-    override fun setTypeface(typeface: Typeface) {
+    override fun setTypeface(typeface: Typeface?) {
         super.setTypeface(typeface)
 
         if (isInitialized) {
